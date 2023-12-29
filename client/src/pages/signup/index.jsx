@@ -46,6 +46,7 @@ const Signup = () => {
     const response = auth.signup(name, email, password, confirmPassword);
     if (response.success) {
       toast.success("Regestraion Successfull..");
+      return navigate("/login");
     } else {
       toast.error(response.message);
     }
