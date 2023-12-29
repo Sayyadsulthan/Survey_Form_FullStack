@@ -1,6 +1,7 @@
 import Admin from "../models/Admin.js";
 import Survey from "../models/Survey.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import { configDotenv } from "dotenv";
 configDotenv();
 
@@ -26,7 +27,10 @@ export const createAdmin = async (req, res) => {
       });
     }
 
-    await Admin.create({ email, name, password: password });
+    const salt = bcrypt.genSaltSync(Number(process.env.saltRounds));
+    const hash = bcrypt.hashSync(password, salt);
+
+    await Admin.create({ email, name, password: hash });
 
     res.status(201).json({ success: true, message: "Account created" });
   } catch (error) {
@@ -45,7 +49,9 @@ export const loginAdmin = async (req, res) => {
       return;
     }
 
-    if (password !== admin.password) {
+    const isValidPAssword = bcrypt.compareSync(password, admin.password);
+
+    if (!isValidPAssword) {
       res.status(400).json({ success: false, message: "Invalid password" });
       return;
     }
