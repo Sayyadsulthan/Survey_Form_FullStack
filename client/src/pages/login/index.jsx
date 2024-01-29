@@ -5,7 +5,6 @@ import {
   Paper,
   Button,
   TextField,
-  Link,
   Avatar,
 } from "@mui/material";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
@@ -95,16 +94,6 @@ const Login = () => {
             </Button>
           </Box>
         </form>
-
-        <Box>
-          <Typography variant="h5">
-            Don't have an Account? :{" "}
-            <Link underline="hover" onClick={() => navigate("/signup")}>
-              {" "}
-              Sign Up
-            </Link>
-          </Typography>
-        </Box>
       </Paper>
     </Box>
   );

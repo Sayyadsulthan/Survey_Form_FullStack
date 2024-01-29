@@ -43,7 +43,7 @@ export const loginAdmin = async (req, res) => {
     const { email, password } = req.body;
 
     const admin = await Admin.findOne({ email });
-
+    console.log(admin);
     if (!admin) {
       res.status(401).json({ success: false, message: "Not a valid User" });
       return;

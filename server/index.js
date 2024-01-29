@@ -30,7 +30,7 @@ app.use(
   })
 );
 
-app.use(passport.initialize())
+app.use(passport.initialize());
 
 app.use("/admin", adminRoutes);
 app.use("/survey", surveyRoutes);

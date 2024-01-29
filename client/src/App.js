@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 import Survey from "./pages/survey";
 import Login from "./pages/login";
-import Signup from "./pages/signup";
 import { useAuth } from "./hook";
 import Navbar from "./components/Navbar";
 import Admin from "./pages/admin";
@@ -30,7 +29,6 @@ const router = createBrowserRouter([
         element: <Survey />,
       },
       { path: "/login", element: <Login /> },
-      { path: "/signup", element: <Signup /> },
       {
         path: "/admin",
         element: (
